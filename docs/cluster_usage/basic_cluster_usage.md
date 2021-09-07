@@ -29,13 +29,14 @@ The RCE cluster uses a framework called HTCondor. The following commands can be 
 - Check available resources: `rce-info.sh`
 - Submit jobs: `condor_submit <submit_file_path>` or `condor_submit_util`
 - Remove running jobs: `condor_rm -name "<name of the machine where job is running>" <JobID>`
+- Check disk usage: `quotareport`
 
-## Other Relevant Commands
+## Optional Tips
+
+#### Other Relevant Commands
 - Start new tmux session: `tmux new`
 - Re-attach the last tmux session: `tmux a`
 - Kill all running tmux sessions: `tmux kill-server`
-
-## Optional Tips
 
 #### Setting up SSH Key Access
 

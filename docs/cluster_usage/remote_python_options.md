@@ -92,13 +92,11 @@
     # Submit condor script
     condor_submit ~/condorscripts/jupyter.submit
     ```
-3. Use [tmux](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/) to handle connection errors/closures (optional)
-    ```bash
-    # Start a new tmux window
-    tmux new
-    ```
+    If job submission system is buggy (it usually is), then follow these steps:
+    - Open NoMachine GUI
+    - Go to Applications -> RCE Powered Applications -> Anaconda Shell (Python 3)
 
-4. Connect to the Jupyter server
+3. Connect to the Jupyter server
     ```bash
     # SSH to the machine running your jupyter server
     . ~/condorscripts/condorsshrce.sh $USER

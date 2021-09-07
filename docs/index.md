@@ -1,13 +1,16 @@
 # Effective Cluster Usage and Data Management
 
-Wednesday, March 27, 2019. 3-4 PM. Perkins.
+Tuesday, Sep 07, 2021.
 
 ### Pre-requisites
 
-Please perform the following steps **before the workshop**, in the interest of time. You can stop by my desk at any point before the workshop if you need help with these:
+Please perform the following steps **before the workshop**, in the interest of time:
 
 - You should have an account on the [RCE Cluster](https://rce-docs.hmdc.harvard.edu/). If you do not have an account, look at [Accessing the RCE](https://rce-docs.hmdc.harvard.edu/book/accessing-rce-0) for instructions on how to obtain one.
 - You should be able to login to the cluster using the graphical client [instructions here](https://rce-docs.hmdc.harvard.edu/nx4)
+
+### Setup
+
 - If you're using Windows, download and install [PuTTY](https://www.putty.org/)
 - If you're on a Mac, download and install [Xquartz](https://www.xquartz.org/)
 - Download and install [FileZilla](https://rce-docs.hmdc.harvard.edu/book/installing-filezilla)
