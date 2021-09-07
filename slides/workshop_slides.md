@@ -1,71 +1,35 @@
 ---
 theme: default
-class:
-  - lead
+_class: lead
+paginate: true
 ---
 
-# CID Data Workshops
+# Tools of Economic Complexity Analysis
 
-Data Management and Effective Cluster Usage
-
----
-
-# Motivation
-
-![looks](https://bigdata-madesimple.com/wp-content/uploads/2018/10/complex-data.jpg)
+Review Session 0A: Cluster Usage and Data Management
 
 ---
 
 # Motivation
 
-- Power-users of the cluster
-- Inadequate documentation on cluster usage, designed for casual users
-- Exasperation directed towards the cluster
-- Interest in data management
+- Most GL project datasets on the cluster
+- Data security
+- Larger datasets / computational requirements
+- Inadequate documentation on cluster usage
 - Evolving data management practices
 
 ---
 
-# Acknowledgements
+# Website
 
-- Feedback sessions
-- Stock-taking sessions
-- Early adopters
-
----
-
-# Pre-requisites
-
-- Windows: Install PuTTy
-- Install Atom
-
----
-
-# Data Management Exercise
-
-- Use data management checklist
-
-- Regular data users
-    + Think about *your* data
-    + Consider specific datasets
-
-- Data facilitators
-    + Think about the data that you have facilitated
-    + Think about institutional processes for items on the checklist
-
----
-
-# Stock-taking
-
-- What data do you have / expect to get?
-- What special needs do these data create, if any?
+- https://cid-harvard.github.io/workshop-cluster-training
 
 ---
 
 # Responsibilities
 
-- Enforcement: one person per project
 - For specific dataset(s) *you* work with: who is responsibile for them?
+- Keep data clean, backed up, secure, documented
 
 ---
 
@@ -75,17 +39,10 @@ Data Management and Effective Cluster Usage
 
 ---
 
-# Storage and Backup
+# Access and security
 
-- Cluster backup discussions with RCE
-- Consider regular external disk backups for sensitive data
-
----
-
-# File organization and naming systems
-
-- Come up with a system and **stick to it**
-- Document the system
+- Cluster security discussions
+- Data security levels: http://security.harvard.com/dct
 
 ---
 
@@ -94,22 +51,6 @@ Data Management and Effective Cluster Usage
 ![goons](https://bigdata-madesimple.com/wp-content/uploads/2018/10/data-security1.gif)
 
 ---
-
-# Access and security
-
-- Cluster security discussions
-- Data security levels: http://security.harvard.com/dct
-
-![projects_backup_security](projects_backup_security.png)
-
----
-
-# Documentation of Rules and Conventions
-
-- Are your project's data management rules / conventions easily accessible?
-- Do you have an orientation packet for new joinees?
-
-___
 
 # Ethics and Privacy
 
