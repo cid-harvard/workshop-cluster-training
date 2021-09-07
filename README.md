@@ -1,5 +1,3 @@
-## Workshop on Effective Cluster Usage
+## Review Session on Effective Cluster Usage
 
-Workshop on effective RCE cluster usage and data management held at CID, Harvard Kennedy School
-
-Wednesday, March 27, 2019. 3-4 PM. Perkins conference room.
+As part of the course: Tools of Economic Complexity. Held at Growth Lab, CID, Harvard Kennedy School
