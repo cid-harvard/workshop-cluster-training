@@ -9,15 +9,31 @@ repo_url: https://github.com/cid-harvard/workshop-cluster-training
 edit_uri: ""
 
 # Add license info
-copyright: 'Licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a> unless otherwise noted.'
+copyright: >
+    Licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a> unless otherwise noted. –
+    <a href="#__consent">Change cookie settings</a>
 
 # Theme
 theme:
     name: material
     language: en
     palette:
-        primary: indigo
-        accent: indigo
+        # Palette toggle for light mode
+        - scheme: default
+          primary: indigo
+          accent: indigo
+          toggle:
+              icon: material/brightness-7 
+              name: Switch to dark mode
+
+        # Palette toggle for dark mode
+        - scheme: slate
+          primary: indigo
+          accent: indigo
+          toggle:
+              icon: material/brightness-4
+              name: Switch to light mode
+        
     font:
         text: 'Roboto'
         code: 'Roboto Mono'
@@ -27,6 +43,15 @@ extra_css:
     - 'stylesheets/extra.css'
 # Social
 extra:
+    consent:
+        title: Cookie consent
+        description: >- 
+            We use cookies for analytics to track user visits to different pages, to track the effectiveness of our documentation.
+        cookies:
+            analytics: Analytics
+        actions:
+            - accept
+            - manage
     social:
         - icon: fontawesome/brands/github-alt
           link: https://github.com/shreyasgm
