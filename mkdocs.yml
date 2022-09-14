@@ -1,5 +1,5 @@
 # Project
-site_name: CID Data Workshops
+site_name: GL Data Workshops
 site_description: Workshop on Effective Cluster Usage and Data Management
 site_author: Shreyas Gadgin Matha
 
@@ -37,12 +37,27 @@ theme:
     font:
         text: 'Roboto'
         code: 'Roboto Mono'
+    
+    features:
+        - content.code.annotate
+        - content.tooltips
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.tracking
+        - search.highlight
+        - search.share
+        - search.suggest
+        - toc.follow
+        - toc.integrate
 
 # Customization
 extra_css:
     - 'stylesheets/extra.css'
 # Social
 extra:
+    analytics:
+        provider: google
+        property: UA-76189439-3
     consent:
         title: Cookie consent
         description: >- 
@@ -73,11 +88,6 @@ markdown_extensions:
     - pymdownx.superfences
     - pymdownx.details
 
-# Google analytics
-google_analytics:
-    - 'UA-76189439-3'
-    - 'auto'
-
 # Navigation structure
 nav:
     - Home: index.md
@@ -85,9 +95,10 @@ nav:
         - Overview: data_management/data_management.md
         - Folder structures: data_management/folder_structure.md
     - FASRC Cluster Training:
-        - Basic Usage and Commands: cluster_usage/fasrc_basic_cluster_usage.md
+        - Basic usage: cluster_usage/fasrc_basic_cluster_usage.md
+        - Advanced usage: cluster_usage/fasrc_advanced_cluster_usage.md
         - Running Python Remotely: cluster_usage/fasrc_remote_python.md
     - RCE Cluster Training:
-        - Basic Commands: cluster_usage/basic_cluster_usage.md
-        - Running Python Remotely: cluster_usage/remote_python_options.md
-        - Running Stata Remotely: cluster_usage/remote_stata_options.md
+        - Basic Commands: cluster_usage/rce_basic_cluster_usage.md
+        - Running Python Remotely: cluster_usage/rce_remote_python_options.md
+        - Running Stata Remotely: cluster_usage/rce_remote_stata_options.md
