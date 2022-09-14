@@ -1,0 +1,1115 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Workshop on Effective Cluster Usage and Data Management">
+      
+      
+        <meta name="author" content="Shreyas Gadgin Matha">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>Running Python Remotely - GL Data Workshops</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-76189439-3","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");ga("send","event","feedback","click",t,e),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>var consent;"undefined"==typeof __md_analytics||(consent=__md_get("__consent"))&&consent.analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#option-1-jupyter-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GL Data Workshops" class="md-header__button md-logo" aria-label="GL Data Workshops" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GL Data Workshops
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Running Python Remotely
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cid-harvard/workshop-cluster-training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cid-harvard/workshop-cluster-training
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../data_management/data_management/" class="md-tabs__link">
+        Data Management
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fasrc_basic_cluster_usage/" class="md-tabs__link">
+        FASRC Cluster Training
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../rce_basic_cluster_usage/" class="md-tabs__link md-tabs__link--active">
+        RCE Cluster Training
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GL Data Workshops" class="md-nav__button md-logo" aria-label="GL Data Workshops" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    GL Data Workshops
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cid-harvard/workshop-cluster-training" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cid-harvard/workshop-cluster-training
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Data Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Data Management" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Management
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_management/data_management/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data_management/folder_structure/" class="md-nav__link">
+        Folder structures
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          FASRC Cluster Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="FASRC Cluster Training" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          FASRC Cluster Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasrc_basic_cluster_usage/" class="md-nav__link">
+        Basic usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasrc_advanced_cluster_usage/" class="md-nav__link">
+        Advanced usage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasrc_remote_python/" class="md-nav__link">
+        Running Python Remotely
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          RCE Cluster Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="RCE Cluster Training" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          RCE Cluster Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rce_basic_cluster_usage/" class="md-nav__link">
+        Basic Commands
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Running Python Remotely
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Running Python Remotely
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#option-1-jupyter-lab" class="md-nav__link">
+    Option 1: Jupyter Lab
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 1: Jupyter Lab">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    Setup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-python-through-jupyter" class="md-nav__link">
+    Running Python through Jupyter
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-atom-hydrogen" class="md-nav__link">
+    Option 2: Atom + Hydrogen
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 2: Atom + Hydrogen">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    Setup
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-the-jupyter-kernel" class="md-nav__link">
+    Setting up the Jupyter Kernel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-atom" class="md-nav__link">
+    Setting up Atom
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-python-through-hydrogen" class="md-nav__link">
+    Running Python through Hydrogen
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rce_remote_stata_options/" class="md-nav__link">
+        Running Stata Remotely
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Running Python Remotely</h1>
+
+<h2 id="option-1-jupyter-lab">Option 1: Jupyter Lab<a class="headerlink" href="#option-1-jupyter-lab" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Compared to working with Jupyter notebooks on the cluster using the NoMachine GUI (which is stuttery because of high latency), running them remotely provides a convenient low latency alternative</li>
+<li>Although Jupyter notebooks have become the de facto method to work on Python, since they are not simple text files, they are harder to manage using Git than <code>.py</code> scripts</li>
+</ul>
+</div>
+<h3 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>SSH into the cluster, using portforwarding</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace &quot;&lt;rce_username&gt;&quot; with your RCE username</span>
+ssh -L <span class="m">8889</span>:localhost:8889 &lt;rce_username&gt;@rce.hmdc.harvard.edu
+</code></pre></div>
+</li>
+<li>
+<p>Load <code>conda</code> into the shell and set necessary environment variables</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful while editing <code>~/.bashrc</code> and <code>~/.bash_profile</code> files - they are executed each time your shell opens, and you don't want to mess it up and be unable to access your account.</p>
+</div>
+<p>Add the following lines to your <code>~/.bashrc</code> (replace <code>&lt;path_to_environment&gt;</code> and <code>&lt;path_to_packages&gt;</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start conda</span>
+. /nfs/tools/lib/anaconda/3-5.2.0/etc/profile.d/conda.sh
+<span class="c1"># Tell conda where to save and look for environments</span>
+<span class="c1"># Example: export CONDA_ENVS_PATH=&quot;/nfs/projects_nobackup_ci3/m/ci3_mastercard/shreyas/utils/envs/&quot;</span>
+<span class="nb">export</span> <span class="nv">CONDA_ENVS_PATH</span><span class="o">=</span><span class="s2">&quot;&lt;path_to_environment&gt;&quot;</span>
+<span class="c1"># Tell conda where to save and look for packages</span>
+<span class="c1"># Example: export CONDA_PKGS_DIRS=&quot;/nfs/projects_nobackup_ci3/m/ci3_mastercard/shreyas/utils/pkgs/&quot;</span>
+<span class="nb">export</span> <span class="nv">CONDA_PKGS_DIRS</span><span class="o">=</span><span class="s2">&quot;&lt;path_to_packages&gt;&quot;</span>
+</code></pre></div>
+<p>If you aren't sure how to edit your <code>.bashrc</code>, run the following commands and it'll do it for you (you still have to replace <code>&lt;path_to_environment&gt;</code> and <code>&lt;path_to_packages&gt;</code>):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="s2">&quot;. /nfs/tools/lib/anaconda/3-5.2.0/etc/profile.d/conda.sh&quot;</span> &gt;&gt; ~/.bashrc
+<span class="c1"># Set required environment variables to specify location of environment</span>
+<span class="nb">echo</span> <span class="s2">&quot;export CONDA_ENVS_PATH=\&quot;&lt;path_to_environment&gt;\&quot;&quot;</span> &gt;&gt; ~/.bashrc
+<span class="nb">echo</span> <span class="s2">&quot;export CONDA_PKGS_DIRS=\&quot;&lt;path_to_packages&gt;\&quot;&quot;</span> &gt;&gt; ~/.bashrc
+</code></pre></div>
+<p>Rerun <code>.bashrc</code>:
+<div class="highlight"><pre><span></span><code>. ~/.bashrc
+</code></pre></div></p>
+</li>
+<li>
+<p>Create and prepare a conda environment, and activate it with the following commands:
+    <div class="highlight"><pre><span></span><code><span class="c1"># Navigate to &lt;path_to_environment&gt;</span>
+<span class="nb">cd</span> &lt;path_to_environment&gt;
+<span class="c1"># Create conda environment in the current folder</span>
+conda create --prefix<span class="o">=</span>cid <span class="nv">python</span><span class="o">=</span><span class="m">3</span>
+<span class="c1"># Activate conda environment (can now be done from any folder)</span>
+conda activate cid
+<span class="c1"># Install necessary packages</span>
+<span class="c1">## Add conda-forge as the main channel for downloading packages (optional)</span>
+conda config --add channels conda-forge
+<span class="c1">## Download required packages</span>
+conda install -c conda-forge jupyterlab nodejs
+</code></pre></div></p>
+</li>
+<li>
+<p>Prepare condor submission and connection scripts (replace <code>&lt;your_token&gt;</code>)
+    <div class="highlight"><pre><span></span><code><span class="c1"># Make a directory somewhere to house the condor scripts</span>
+mkdir -p ~/condorscripts/condorlogs <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/condorscripts
+<span class="c1"># Download Jupyter submission script from Github Repo</span>
+curl -O https://raw.githubusercontent.com/cid-harvard/workshop-cluster-training/master/assets/condorscripts/jupyter.submit
+<span class="c1"># Automatically replace &quot;~&quot; in jupyter.submit with the absolute path to your HOME directory</span>
+sed -i <span class="s1">&#39;s@\~@&#39;</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">&quot;</span><span class="s1">&#39;@&#39;</span> jupyter.submit
+<span class="c1"># Download Jupyter connection script</span>
+curl -O https://raw.githubusercontent.com/cid-harvard/workshop-cluster-training/master/assets/condorscripts/condorsshrce.sh
+<span class="c1"># Automatically replace &quot;username&quot; with the username</span>
+sed -i <span class="s1">&#39;s/username/&#39;</span><span class="s2">&quot;</span><span class="nv">$USER</span><span class="s2">&quot;</span><span class="s1">&#39;/&#39;</span> condorsshrce.sh
+<span class="c1"># Download shell script to activate conda env named &#39;cid&#39; and run Jupyter</span>
+curl -O https://raw.githubusercontent.com/cid-harvard/workshop-cluster-training/master/assets/condorscripts/run_jupyter.sh
+<span class="c1"># Replace &quot;&lt;your_token&gt;&quot; with token of your choice</span>
+<span class="c1"># Example: sed -i &#39;s/my_token/example_token/&#39; run_jupyter.sh</span>
+sed -i <span class="s1">&#39;s/my_token/&lt;your_token&gt;/&#39;</span> run_jupyter.sh
+</code></pre></div></p>
+</li>
+</ol>
+<h3 id="running-python-through-jupyter">Running Python through Jupyter<a class="headerlink" href="#running-python-through-jupyter" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>SSH into the cluster, using portforwarding (if you haven't yet)</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace &quot;&lt;rce_username&gt;&quot; with your RCE username</span>
+ssh -L <span class="m">8889</span>:localhost:8889 &lt;rce_username&gt;@rce.hmdc.harvard.edu
+</code></pre></div>
+</li>
+<li>
+<p>Submit Jupyter job
+    <div class="highlight"><pre><span></span><code><span class="c1"># Submit condor script</span>
+condor_submit ~/condorscripts/jupyter.submit
+</code></pre></div>
+    If job submission system is buggy (it usually is), then follow these steps:</p>
+<ul>
+<li>Open NoMachine GUI</li>
+<li>Go to Applications -&gt; RCE Powered Applications -&gt; Anaconda Shell (Python 3)</li>
+</ul>
+</li>
+<li>
+<p>Connect to the Jupyter server
+    <div class="highlight"><pre><span></span><code><span class="c1"># SSH to the machine running your jupyter server</span>
+. ~/condorscripts/condorsshrce.sh <span class="nv">$USER</span>
+</code></pre></div></p>
+<details class="tip">
+<summary>Tip: tmux keyboard shortcuts and commands</summary>
+<ul>
+<li>New tmux window: <code>tmux new</code></li>
+<li>Detach tmux window: <code>ctrl+b</code>, then <code>d</code></li>
+<li>Reattach latest tmux window: <code>tmux a</code></li>
+<li>New horizontal pane: <code>ctrl+b</code>, then <code>"</code></li>
+<li>New vertical pane: <code>ctrl+b</code>, then <code>%</code></li>
+<li>Kill current pane: <code>ctrl+b</code>, then <code>x</code>, then <code>y</code></li>
+<li>Move between panes: <code>ctrl+b</code>, then arrow keys</li>
+<li>Stop moving, or cancel a tmux-specific command: <code>escape</code></li>
+<li>Kill all tmux sessions: <code>tmux kill-server</code></li>
+</ul>
+</details>
+</li>
+<li>
+<p>In your browser, go to <code>localhost:8889</code>, and voila!</p>
+</li>
+<li>Once you're done, you can close the compute node using <code>ctrl+d</code>, you might then have to press <code>ctrl+c</code> if your login node is taking time to appear</li>
+<li>
+<p>Remember to remove the job once you're finished:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Look up running jobs</span>
+condor_q -global <span class="nv">$USER</span>
+<span class="c1"># Remove job</span>
+condor_rm -name <span class="s2">&quot;&lt;machine_name&gt;&quot;</span> &lt;ID&gt;
+</code></pre></div>
+<details class="example">
+<summary>Example</summary>
+<p><img alt="Job Removal Example" src="../../img/remove_job_example.png" /></p>
+</details>
+</li>
+</ol>
+<h2 id="option-2-atom-hydrogen">Option 2: Atom + Hydrogen<a class="headerlink" href="#option-2-atom-hydrogen" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>The text editor Atom, using the package Hydrogen, allows you to run code interactively, inspect data and plot using Jupyter kernels.</li>
+<li>Allows the option of working on <code>.py</code> files directly, with low latency.</li>
+</ul>
+</div>
+<h3 id="setup_1">Setup<a class="headerlink" href="#setup_1" title="Permanent link">&para;</a></h3>
+<h4 id="setting-up-the-jupyter-kernel">Setting up the Jupyter Kernel<a class="headerlink" href="#setting-up-the-jupyter-kernel" title="Permanent link">&para;</a></h4>
+<p>The steps for setting up the Jupyter kernel are the same as for <a href="#option-1-jupyter-lab"><em>Option 1: Jupyter Lab</em></a>.</p>
+<h4 id="setting-up-atom">Setting up Atom<a class="headerlink" href="#setting-up-atom" title="Permanent link">&para;</a></h4>
+<p>You can learn some Atom basics <a href="https://flight-manual.atom.io/getting-started/sections/atom-basics">here</a></p>
+<ol>
+<li>
+<p>Install required packages</p>
+<p>To install a package on atom, press <code>Cmd+Shift+P</code> (Mac) or <code>Cmd+Shift+P</code> (Windows) to enter the "Command Palette", and type <code>Install Packages</code>. Install the following packages:</p>
+<ul>
+<li><a href="https://atom.io/packages/remote-ftp">remote-ftp</a>: enable browsing remote files</li>
+<li><a href="https://atom.io/packages/hydrogen">hydrogen</a>: run code through jupyter kernels</li>
+</ul>
+<p>Optional (my favourite add-ons):</p>
+<ul>
+<li><a href="https://atom.io/packages/tree-view">tree-view</a>: explore files in project</li>
+<li><a href="https://atom.io/packages/file-icons">file-icons</a>: convenient file icons in tree view</li>
+<li><a href="https://atom.io/packages/atom-beautify">atom-beautify</a>: automatically indent / beautify code according to linters</li>
+<li><a href="https://atom.io/packages/open-recent">open-recent</a>: open recently opened files / projects</li>
+<li><a href="https://atom.io/packages/teletype">teletype</a>: collaborate on code in real-time (think google docs for code)</li>
+<li><a href="https://atom.io/packages/highlight-selected">highlight-selected</a>: highlight all occurrences of selected word or phrase</li>
+<li><a href="https://atom.io/packages/minimap">minimap</a>: mini view of the code on the side</li>
+</ul>
+</li>
+<li>
+<p>Configure <code>remote_ftp</code></p>
+<ul>
+<li>Create an empty folder in your computer. Call it <code>remote_atom</code> (or any other name you might see fit).</li>
+<li>Open Atom and click "File -&gt; Open -&gt; <code>remote_atom</code>". This will open the <code>remote_atom</code> folder as a "project".</li>
+<li>Open the Command Palette (<code>Cmd+Shift+P</code> or <code>Ctrl+Shift+P</code>) and type "Create Sftp" and choose the option "Remote Ftp: Create Sftp Config File". You will notice that a file named <code>.ftpconfig</code> is automatically created in the same folder.</li>
+<li>Replace the contents of the file with the following, modifying the <code>user</code> and <code>remote</code> parameters:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sftp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rce.hmdc.harvard.edu&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// string - Hostname or IP address of the server. Default: &#39;localhost&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w"> </span><span class="c1">// integer - Port number of the server. Default: 22</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;username&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// string - Username for authentication. Default: (none)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;promptForPass&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="c1">// boolean - Set to true for enable password/passphrase dialog. This will prevent from using cleartext password/passphrase in this config. Default: false</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;remote&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/nfs/home/S/shg309/ &lt;replace with your own home folder&gt;&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// try to use absolute paths starting with /</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;connTimeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w"> </span><span class="c1">// integer - How long (in milliseconds) to wait for the SSH handshake to complete. Default: 10000</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;keepalive&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w"> </span><span class="c1">// integer - How often (in milliseconds) to send SSH-level keepalive packets to the server (in a similar way as OpenSSH&#39;s ServerAliveInterval config option). Set to 0 to disable. Default: 10000</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>Open the Command Palette and type "Remote Ftp", and choose the option <code>Toggle</code>. This will open up a <code>Remote</code> tab on the left hand side.</li>
+<li>In the <code>Remote</code> tab, click on <code>Connect</code>, and voila! You can now edit files on the cluster as if they were on your own computer!</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Don't use the <code>remote_atom</code> project unless you're working on the cluster. The files in the folder are uploaded automatically to the cluster when you reconnect.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li>Once you're done, remember to <code>Disconnect</code>.</li>
+<li>Optional: Through the Command Palette, go to "View Installed Packages" --&gt; remote_ftp's settings --&gt; change <code>Auto Upload on Save</code> from <code>always</code> to <code>only when connected</code></li>
+</ul>
+</div>
+</li>
+<li>
+<p>Configure Hydrogen</p>
+<ul>
+<li>Through the Command Palette, go to "View Installed Packages" --&gt; hydrogen's settings --&gt; change <code>Kernel Gateways</code> to the following (replace <code>&lt;your_token&gt;</code> with the token you set for Jupyter earlier):</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="p">[{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;RCE Jupyter&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;options&quot;</span><span class="p">:{</span><span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span><span class="s2">&quot;http://localhost:8889&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;&lt;your_token&gt;&quot;</span><span class="p">}}]</span><span class="w"></span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="running-python-through-hydrogen">Running Python through Hydrogen<a class="headerlink" href="#running-python-through-hydrogen" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Connect to Remote Kernel</p>
+<ul>
+<li>Open a Python <code>.py</code> script</li>
+<li>Through the Command Palette, go to "Connect to Remote Kernel".</li>
+</ul>
+<details class="bug">
+<summary>Troubleshooting</summary>
+<p>If you haven't set a token, you might be asked to "Authenticate Using Token". To find the authentication token, on an RCE node, type the following:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Activate conda environment</span>
+conda activate cid
+<span class="c1"># Get Jupyter token</span>
+jupyter notebook list
+</code></pre></div>
+<p>The token will be of the form:</p>
+<p><pre><code>
+http://localhost:8889/?token=<mark>a61elkjziunns1523e70eb18a452cfsdf9812302199b87e</mark>
+</pre></code></p>
+</details>
+</li>
+<li>
+<p>Running code</p>
+<ul>
+<li>Select code you want to run, and hit <code>Cmd+Enter</code> (Mac) or <code>Ctrl+Enter</code> (Windows)</li>
+<li>To run all code, hit <code>Cmd+Option+Enter</code> (Mac) or <code>Ctrl+Alt+Enter</code> (Windows)</li>
+</ul>
+</li>
+<li>
+<p>Magics</p>
+<ul>
+<li>You can use <a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">Jupyter magics</a> through Hydrogen</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">reset</span> <span class="o">-</span><span class="n">f</span> <span class="c1"># Reset all variables in memory</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span> <span class="c1"># Inline matplotlib figures</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Simple tests</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">)</span>
+<span class="mi">17</span><span class="o">+</span><span class="mi">25</span>
+
+<span class="c1"># Print dataframe</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]})</span>
+
+<span class="c1"># Show plot</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">area</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>  <span class="c1"># 0 to 15 point radii</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">area</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</li>
+</ol>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../rce_basic_cluster_usage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basic Commands" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Basic Commands
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../rce_remote_stata_options/" class="md-footer__link md-footer__link--next" aria-label="Next: Running Stata Remotely" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Running Stata Remotely
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a> unless otherwise noted. – <a href="#__consent">Change cookie settings</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/shreyasgm" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/shreyasgm" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://linkedin.com/in/shreyasgm/" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+
+<h4>Cookie consent</h4>
+<p>We use cookies for analytics to track user visits to different pages, to track the effectiveness of our documentation.</p>
+<input type="checkbox" class="md-toggle" id="__settings">
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Analytics
+        <label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);console.log(new FormData(form)),__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tooltips", "navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+    
+  </body>
+</html>
